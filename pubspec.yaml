@@ -35,8 +35,14 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
-  #Database storage
-  sqflite:
+  #Firebase Database
+  cloud_firestore: ^3.1.15
+
+  #Firebase Authentification
+  firebase_auth: ^3.3.19
+
+  #Email Validator
+  email_validator: ^2.0.1
 
 dev_dependencies:
   flutter_test:
