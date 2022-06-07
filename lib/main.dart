@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:productivity_app/provider/note_provider.dart';
+import 'package:provider/provider.dart';
 import 'auth_page.dart';
 import 'verify_email_page.dart';
 import 'utils.dart';
@@ -8,6 +10,7 @@ import 'utils.dart';
 //ignore_for_file: prefer_const_constructors
 
 //void main () => runApp(MyApp());
+//FIREBASE SYNTAX
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -20,21 +23,22 @@ final navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget{
   @override
-  Widget build(BuildContext context){
-    return MaterialApp(
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+    create: (context) => NoteProvider(),
+    child: MaterialApp(
       //For Utils
       scaffoldMessengerKey: Utils.messengerKey,
       //For Sign Up - Sign In navigation
       navigatorKey: navigatorKey,
       title: 'ProductivityApp',
       theme: ThemeData(
-        primarySwatch: Colors.pink,
+        primarySwatch: Colors.indigo,
       ),
       home: Authentication(),
       //Disables Debug banner
       debugShowCheckedModeBanner: false,
-    );
-  }
+    ),
+  );
 }
 
 class Authentication extends StatelessWidget{

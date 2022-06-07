@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:productivity_app/provider/note_provider.dart';
+import 'package:provider/provider.dart';
+import 'add_note_popup.dart';
+import 'note_list_widget.dart';
 //ignore_for_file: prefer_const_constructors
 
 class NoteMenu extends StatefulWidget {
@@ -10,73 +14,27 @@ class NoteMenu extends StatefulWidget {
 
 //The page where all notes are displayed
 class _NoteMenuState extends State<NoteMenu> {
-  //Initial number of notes
-  int count = 0;
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.yellow.shade600,
-        title: Text('Notes',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-      body: getNoteListView(),
-
-      floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            addNotePopup();
-          },
-          //When long-pressed, button displays this text
-          tooltip: 'Add',
-          //Icon
-          child: Icon(Icons.add),
-      ),
-    );
-  }
-
-  ListView getNoteListView(){
-
-    //TextStyle titleStyle = Theme.of(context).textTheme.subhead;
-    return ListView.builder(
-        //How many notes there are to build
-        itemCount: count,
-        //Convert each item into a widget
-        itemBuilder: (BuildContext context, int position){
-          return Card(
-            color: Colors.yellow.shade600,
-            child: ListTile(
-              title: Text('To Be Continued'),
-              onTap: (){
-
-              }
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: Text('Notes',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
             ),
-          );
-        }
-    );
-  }
-
-  Future addNotePopup() => showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Note Title'),
-        content: TextField(
-          //Brings up keyboard when button is pressed
-          autofocus: true,
-          //Access the value
-          decoration: InputDecoration(hintText: 'What is this note about?'),
-        ),
-        actions: [
-          TextButton(
-            child: Text('ADD'),
-            onPressed: () {
-
-              },
           ),
-        ],
-      ),
-  );
+        ),
+        body: NoteListWidget(),
+
+        floatingActionButton: FloatingActionButton(
+            onPressed: () => showDialog(
+                context: context,
+               builder: (BuildContext context) => AddNotePopup(),
+           ),
+            //When long-pressed, button displays this text
+            tooltip: 'Add',
+            //Icon
+            child: Icon(Icons.add),
+        ),
+      );
 }

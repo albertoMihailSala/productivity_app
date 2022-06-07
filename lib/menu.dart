@@ -9,7 +9,7 @@ class Menu extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     //Informații utilizator
-    final user = FirebaseAuth.instance.currentUser!;
+    //final user = FirebaseAuth.instance.currentUser!;
 
     return Scaffold(
       //Centering the buttons
@@ -26,6 +26,7 @@ class Menu extends StatelessWidget{
             //<ProductivityApp Logo>
             Text("What do you need?",
               style: TextStyle(
+                color: Theme.of(context).colorScheme.primary,
                 fontSize: 40,
                 fontWeight: FontWeight.bold,
               ),
@@ -100,14 +101,14 @@ class Menu extends StatelessWidget{
               ),
             ),
             SizedBox(
-              height: 10,
+              height: 20,
             ),
             ElevatedButton(
                 onPressed: () => FirebaseAuth.instance.signOut(),
                 child: Text('Sign Out'),
             ),
             SizedBox(
-              height: 30,
+              height: 20,
             ),
             //Politehnica Logo
             Image.asset('assets/Logo_Politehnica.png', height: 110, width: 110,),
