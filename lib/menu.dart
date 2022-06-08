@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:productivity_app/notes/note_menu.dart';
 //ignore_for_file: prefer_const_constructors
 
@@ -23,19 +24,19 @@ class Menu extends StatelessWidget{
           crossAxisAlignment: CrossAxisAlignment.center,
           //Adding the buttons
           children: [
-            //<ProductivityApp Logo>
             Text("What do you need?",
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.primary,
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
+              style: GoogleFonts.prompt(
+                textStyle: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             //Space between
-            SizedBox(height: 30,
-            ),
+            SizedBox(height: 30),
             //Lists Button
-            ElevatedButton.icon(
+            OutlinedButton.icon(
               //Function
               onPressed: () {
               },
@@ -43,14 +44,25 @@ class Menu extends StatelessWidget{
               icon: Icon(
                 Icons.format_list_bulleted_rounded,
                 size: 95,
+                color: Colors.black,
               ),
               //Text
-              label: Text('Lists'),
+              label: Text(
+                  'Lists',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+              ),
               //Button proprieties
               style: ButtonStyle(
-                //Change default background color
-                backgroundColor: MaterialStateProperty.all(Colors.blue),
-
+                //Change border
+                side: MaterialStateProperty.all(BorderSide(
+                    color: Colors.black,
+                    width: 4,
+                    style: BorderStyle.solid)),
+                //Change shape to a more rodunded one
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(35.0))),
                 //Size for consistency
                 minimumSize: MaterialStateProperty.all(const Size(370, 40)),
 
@@ -61,17 +73,12 @@ class Menu extends StatelessWidget{
                 textStyle: MaterialStateProperty.all(
                   const TextStyle(fontSize: 95),
                 ),
-
-                //Color animation when pressing button
-                overlayColor: MaterialStateProperty.all(Colors.blue.shade700),
               ),
             ),
             //Space between
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
             //Notes Button
-            ElevatedButton.icon(
+            OutlinedButton.icon(
               //Function
               onPressed: () {
                 Navigator.push(
@@ -83,21 +90,31 @@ class Menu extends StatelessWidget{
               icon: Icon(
                 Icons.edit_note,
                 size: 94,
+                color: Colors.black,
               ),
               //Text
-              label: Text('Notes'),
+              label: Text(
+                  'Notes',
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              ),
               //Button proprieties
               style: ButtonStyle(
-                //Change default background color
-                backgroundColor: MaterialStateProperty.all(Colors.yellow.shade600),
+                //Change border width & color
+                side: MaterialStateProperty.all(BorderSide(
+                      color: Colors.black,
+                      width: 4,
+                      style: BorderStyle.solid)),
+                //Change shape to a more rodunded one
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(35.0))),
                 //Distance between text & container
                 padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
                 //Text Font
                 textStyle: MaterialStateProperty.all(
                   const TextStyle(fontSize: 94),
                 ),
-                //Color animation when pressing button
-                overlayColor: MaterialStateProperty.all(Colors.yellow.shade700),
               ),
             ),
             SizedBox(
@@ -106,12 +123,20 @@ class Menu extends StatelessWidget{
             ElevatedButton(
                 onPressed: () => FirebaseAuth.instance.signOut(),
                 child: Text('Sign Out'),
+                style: ButtonStyle(
+                  //Distance between text & container
+                  padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+                  //Text Font
+                  textStyle: MaterialStateProperty.all(
+                    const TextStyle(fontSize: 40),
+                  ),
+                ),
             ),
             SizedBox(
               height: 20,
             ),
             //Politehnica Logo
-            Image.asset('assets/Logo_Politehnica.png', height: 110, width: 110,),
+            Image.asset('assets/Logo_Politehnica.png', height: 120, width: 120),
           ],
           ),
         ),

@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:productivity_app/notes/note_form_widget.dart';
 import 'note_class.dart';
 import 'note_form_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:productivity_app/provider/note_provider.dart';
+import 'note_utils.dart';
 //ignore_for_file: prefer_const_constructors
 
 class EditNotePage extends StatefulWidget {
@@ -63,8 +66,12 @@ class _EditNotePageState extends State<EditNotePage> {
       final provider = Provider.of<NoteProvider>(context, listen: false);
 
       provider.updateNote(widget.note, title, description);
+
       //EXIT EDIT PAGE AFTER UPDATE
       Navigator.of(context).pop();
+      //DISPLAY MESSAGE
+      NoteUtils.showSnackBar(context, 'Saved changes');
+
     }
   }
 }

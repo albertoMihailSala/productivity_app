@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'note_widget.dart';
 import 'package:productivity_app/provider/note_provider.dart';
+import 'package:dotted_line/dotted_line.dart';
 //ignore_for_file: prefer_const_constructors
 
 class NoteListWidget extends StatelessWidget {
@@ -31,8 +32,17 @@ class NoteListWidget extends StatelessWidget {
 
             return NoteWidget(note: note);
           },
-          separatorBuilder: (context, index) => Container(height: 25),
+          //separatorBuilder: (context, index) => Container(height: 25),
+          separatorBuilder: (context, index) => Padding(
+            padding: EdgeInsets.symmetric(vertical: 25),
+            child:DottedLine(
+              dashColor: Colors.black,
+              lineThickness: 7,
+              dashLength: 50,
+              dashRadius: 60,
+              dashGapLength: 12,
+            ),
+          ),
           itemCount: notes.length);
-
   }
 }

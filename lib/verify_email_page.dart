@@ -92,6 +92,14 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                                :null,
                     icon: Icon(Icons.check_box_outlined),
                     label: Text('Resend email'),
+                    style: ButtonStyle(
+                      //Distance between text & container
+                      padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+                      //Text Font
+                      textStyle: MaterialStateProperty.all(
+                        const TextStyle(fontSize: 25),
+                    ),
+                  ),
                 ),
                 SizedBox(height: 20),
                 //CANCEL

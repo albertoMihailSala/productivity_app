@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 //import 'package:firebase_auth_email/main.dart';
 //import 'package:firebase_auth_email/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'main.dart';
 import 'utils.dart';
 import 'forgot_password_page.dart';
@@ -41,6 +42,17 @@ class _LoginWidgetState extends State<LoginWidget> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(height: 40),
+          Text(
+            'ProductivtyApp',
+             style: GoogleFonts.prompt(  //prompt
+               textStyle: TextStyle(
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+             ),
+          ),
+          SizedBox(height: 10),
           //Câmpul pentru email
           TextField(
             controller: emailController,
@@ -62,7 +74,15 @@ class _LoginWidgetState extends State<LoginWidget> {
               icon: Icon(
                 Icons.fireplace_outlined,
               ),
-              label: Text('Log In with Firebase')
+              label: Text('Log In with Firebase'),
+            style: ButtonStyle(
+              //Distance between text & container
+              padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+              //Text Font
+              textStyle: MaterialStateProperty.all(
+                const TextStyle(fontSize: 25),
+              ),
+            ),
           ),
           SizedBox(height: 20),
           //FORGOT PASSWORD

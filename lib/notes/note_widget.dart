@@ -86,6 +86,7 @@ class NoteWidget extends StatelessWidget {
   void editNote(BuildContext context, Note note) => Navigator.of(context).push(
     MaterialPageRoute(builder: (context) => EditNotePage(note: note),
     ),
+
   );
 
   void deleteNote (BuildContext context, Note note){

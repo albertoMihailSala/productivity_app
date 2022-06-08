@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'utils.dart';
 //ignore_for_file: prefer_const_constructors
 
@@ -33,10 +34,25 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           child: Form(
             key: formKey,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                    'A link will be sent to your email'
+                    'A link will be sent to your email',
+                    style: GoogleFonts.redHatDisplay(
+                    textStyle: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                ),
+                ),
+                Text(
+                  'Make sure to check your Junk folder',
+                  style: GoogleFonts.redHatDisplay( //assistant
+                  textStyle: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                 ),
                 ),
                 SizedBox(height: 20),
                 TextFormField(
@@ -53,7 +69,16 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 ElevatedButton.icon(
                     onPressed: resetPassword,
                     icon: Icon(Icons.email_outlined),
-                    label: Text('Reset Password'))
+                    label: Text('Reset Password'),
+                  style: ButtonStyle(
+                    //Distance between text & container
+                    padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+                    //Text Font
+                    textStyle: MaterialStateProperty.all(
+                      const TextStyle(fontSize: 25),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

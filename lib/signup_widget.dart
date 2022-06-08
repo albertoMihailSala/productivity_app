@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 //import 'package:firebase_auth_email/utils/utils.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'main.dart';
 import 'utils.dart';
 //ignore_for_file: prefer_const_constructors
@@ -44,6 +45,17 @@ class _SignUpWidgetState extends State<SignUpWidget> {
          mainAxisAlignment: MainAxisAlignment.center,
          children: [
            SizedBox(height: 40),
+           Text(
+             'Welcome!',
+             style: GoogleFonts.prompt(  //prompt
+               textStyle: TextStyle(
+                 fontSize: 35,
+                 fontWeight: FontWeight.bold,
+                 color: Theme.of(context).colorScheme.primary,
+               ),
+             ),
+           ),
+           SizedBox(height: 15),
             //CÂMPUL PENTRU EMAIL
            TextFormField(
               controller: emailController,
@@ -71,11 +83,19 @@ class _SignUpWidgetState extends State<SignUpWidget> {
            SizedBox(height: 20),
             //SIGN UP BUTTON
             ElevatedButton.icon(
-                onPressed: signUp,
+               onPressed: signUp,
                icon: Icon(
                     Icons.lock
                ),
-                label: Text('Sign Up')
+                label: Text('Sign Up'),
+              style: ButtonStyle(
+                //Distance between text & container
+                padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+                //Text Font
+                textStyle: MaterialStateProperty.all(
+                  const TextStyle(fontSize: 30),
+                ),
+              ),
            ),
             SizedBox(height: 20),
             //SIGN IN TEXT
