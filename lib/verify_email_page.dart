@@ -1,6 +1,7 @@
 import 'dart:async'; //PENTRU TIMER
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'menu.dart';
 import 'utils.dart';
 //ignore_for_file: prefer_const_constructors
@@ -76,13 +77,20 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
           appBar: AppBar(
           title: Text('Verify your email'),
           ),
-          body: Padding(
-            padding: EdgeInsets.all(16),
+          body: Center(
+            //padding: EdgeInsets.all(16),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  'A verification email has been sent'
+                  'A verification email has been sent',
+                  style: GoogleFonts.redHatDisplay( //assistant
+                      textStyle: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      ),
+                  ),
                 ),
                 SizedBox(height: 20),
                 //RESEND EMAIL BUTTON
@@ -105,7 +113,13 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                 //CANCEL
                 TextButton(
                     onPressed: () => FirebaseAuth.instance.signOut(),
-                    child: Text('Cancel')
+                    child: Text('Cancel',
+                                  style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  ),
+                          ),
+
                 ),
               ],
             ),

@@ -53,6 +53,7 @@ class _AddNotePopupState extends State<AddNotePopup> {
         id: DateTime.now().toString(),
         title: title,
         description: description,
+        createdAt: DateTime.now(),
       );
       final provider = Provider.of<NoteProvider>(context, listen: false);
       provider.addNote(newNote);

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:productivity_app/provider/note_provider.dart';
+import 'package:productivity_app/provider/task_provider.dart';
 import 'package:provider/provider.dart';
 import 'auth_page.dart';
 import 'verify_email_page.dart';
@@ -23,8 +24,12 @@ final navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget{
   @override
-  Widget build(BuildContext context) => ChangeNotifierProvider(
-    create: (context) => NoteProvider(),
+  Widget build(BuildContext context) => MultiProvider(
+    //STATE MANAGEMENT FOR LISTS, TASKS & NOTES
+    providers: [
+        ChangeNotifierProvider(create: (context) => NoteProvider()),
+        ChangeNotifierProvider(create: (context) => TaskProvider()),
+    ],
     child: MaterialApp(
       //For Utils
       scaffoldMessengerKey: Utils.messengerKey,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:productivity_app/notes/note_menu.dart';
+import 'package:productivity_app/tasks/task_menu.dart';
 //ignore_for_file: prefer_const_constructors
 
 //MENIUL PRINCIPAL
@@ -39,6 +40,10 @@ class Menu extends StatelessWidget{
             OutlinedButton.icon(
               //Function
               onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TaskMenu()),
+                );
               },
               //Icon
               icon: Icon(

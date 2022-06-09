@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import '../api/firebase_api.dart';
 import 'add_note_popup.dart';
 import 'note_list_widget.dart';
 import 'note_class.dart';
@@ -47,7 +48,7 @@ class _NoteMenuState extends State<NoteMenu> {
         floatingActionButton: FloatingActionButton(
             onPressed: () => showDialog(
                 context: context,
-               builder: (BuildContext context) => AddNotePopup(),
+                builder: (BuildContext context) => AddNotePopup(),
            ),
             //When long-pressed, button displays this text
             tooltip: 'Add',
@@ -58,7 +59,9 @@ class _NoteMenuState extends State<NoteMenu> {
 
   //STREAM-UL PENTRU CITIREA NOTIȚELOR DIN FIREBASE
   Stream<List<Note>> readNotes() =>
-      FirebaseFirestore.instance.collection('notes').snapshots()
+      FirebaseFirestore.instance.collection('users').doc(FirebaseApi.getCurrentUser()).collection('notes')
+          .orderBy(NoteField.createdAt, descending: true)
+          .snapshots()
       .map((snapshot) =>
       snapshot.docs.map((doc) => Note.fromJson(doc.data())).toList());
 }

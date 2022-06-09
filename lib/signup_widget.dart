@@ -134,6 +134,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
     );
 
     try {
+      //CREATE NEW USER ACCOUNT
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
@@ -144,7 +145,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
       Utils.showSnackBar(e.message);
     }
 
-    //Ascundem indicatorul de Loading după ce utilizatorul s-a logat
+    //HIDE LOADING INDICATOR
     navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 }
