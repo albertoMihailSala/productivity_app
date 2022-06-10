@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:productivity_app/provider/note_provider.dart';
 import 'package:productivity_app/provider/task_provider.dart';
+import 'package:productivity_app/provider/todo_provider.dart';
 import 'package:provider/provider.dart';
 import 'auth_page.dart';
 import 'verify_email_page.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget{
     providers: [
         ChangeNotifierProvider(create: (context) => NoteProvider()),
         ChangeNotifierProvider(create: (context) => TaskProvider()),
+        ChangeNotifierProvider(create: (context) => TodoProvider()),
     ],
     child: MaterialApp(
       //For Utils

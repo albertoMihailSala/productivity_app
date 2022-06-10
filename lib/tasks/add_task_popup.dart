@@ -3,10 +3,17 @@ import 'task_form_widget.dart';
 import 'task_class.dart';
 import 'package:provider/provider.dart';
 import 'package:productivity_app/provider/task_provider.dart';
+import 'package:productivity_app/todos/todo_class.dart';
 //ignore_for_file: prefer_const_constructors
 
 class AddTaskPopup extends StatefulWidget {
-  const AddTaskPopup({Key? key}) : super(key: key);
+  //const AddTaskPopup({Key? key}) : super(key: key);
+  final Todo todo;
+
+  AddTaskPopup({
+    Key? key,
+    required this.todo,
+  }): super(key: key);
 
   @override
   State<AddTaskPopup> createState() => _AddTaskPopupState();
@@ -53,6 +60,7 @@ class _AddTaskPopupState extends State<AddTaskPopup> {
     else {
       final newTask = Task(
         id: DateTime.now().toString(),
+        todoId: widget.todo.id,
         title: title,
         priority: priority,
         category: category,

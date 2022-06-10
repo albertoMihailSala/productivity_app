@@ -57,7 +57,7 @@ class TaskFormWidget extends StatelessWidget {
         labelText: 'TITLE'),
   );
 
-  Widget buildPriority() => DropdownButton(
+  Widget buildPriority() => DropdownButtonFormField(
       value: priority,
       items: <String>['High', 'Medium', 'Low']
               .map<DropdownMenuItem<String>>((String value) {
@@ -68,7 +68,7 @@ class TaskFormWidget extends StatelessWidget {
       }).toList(),
       onChanged: onChangedPriority);
 
-  Widget buildCategory() => DropdownButton(
+  Widget buildCategory() => DropdownButtonFormField(
       value: category,
       items: <String>['Personal', 'Work', 'Other']
           .map<DropdownMenuItem<String>>((String value) {

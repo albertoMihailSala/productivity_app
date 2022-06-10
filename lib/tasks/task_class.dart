@@ -5,13 +5,15 @@ class TaskField {
 }
 class Task {
   String id;
+  String todoId;
   String title;
   String? priority;
   String? category;
   DateTime createdAt;
 
   Task({
-    this.id ='',
+    this.id = '',
+    this.todoId = '',
     required this.title,
     required this.priority,
     required this.category,
@@ -21,6 +23,7 @@ class Task {
   //JSON METHOD FOR STORING IN FIREBASE
   Map<String, dynamic> toJson() => {
     'id': id,
+    'todoId': todoId,
     'title': title,
     'priority': priority,
     'category': category,
@@ -30,6 +33,7 @@ class Task {
   //JSON METHOD FOR READING FROM FIREBASE
   static Task fromJson(Map<String, dynamic> json) => Task(
     id: json['id'],
+    todoId: json['todoId'],
     title: json['title'],
     priority: json['priority'],
     category: json['category'],
