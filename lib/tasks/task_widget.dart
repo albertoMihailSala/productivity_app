@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'task_class.dart';
+import 'package:provider/provider.dart';
+import 'package:productivity_app/provider/task_provider.dart';
+import 'task_utils.dart';
+import 'edit_task_page.dart';
 
 class TaskWidget extends StatelessWidget {
-  //const TaskWidget({Key? key}) : super(key: key);
-
   final Task task;
 
   const TaskWidget({
@@ -19,11 +21,11 @@ class TaskWidget extends StatelessWidget {
       motion: DrawerMotion(),
       children: [
         SlidableAction(
-          onPressed: null,
+          onPressed: (context) => editTask(context, task),
           backgroundColor: Colors.lightGreen,
           foregroundColor: Colors.white,
-          icon: Icons.edit,
-          label: 'Edit',
+          //icon: Icons.refresh,
+          label: 'Update',
         ),
       ],
     ),
@@ -34,17 +36,16 @@ class TaskWidget extends StatelessWidget {
       motion: DrawerMotion(),
       children: [
         SlidableAction(
-          onPressed: null,
+          onPressed: (context) => deleteTask(context, task),
           backgroundColor: Colors.red,
           foregroundColor: Colors.white,
-          icon: Icons.delete,
-          label: 'Delete',
+          //icon: Icons.close,
+          label: 'Remove',
         ),
       ],
     ),
   );
 
-  @override
   Widget buildTask(BuildContext context) => Container(
     decoration: BoxDecoration(
       border: Border(
@@ -65,16 +66,37 @@ class TaskWidget extends StatelessWidget {
       children: [
         getIcon(task),
         SizedBox(width: 10),
-        Text(
-          task.title,
-          style: TextStyle(
-            fontSize: 35,
-            color: Colors.black,
-          ),
+        Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  task.title,
+                  style: const TextStyle(
+                    fontSize: 30,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
         ),
       ],
     ),
   );
+
+  void editTask(BuildContext context, Task task) => Navigator.of(context).push(
+    MaterialPageRoute(builder: (context) => EditTaskPage(task: task),
+    ),
+
+  );
+
+  void deleteTask(BuildContext context, Task task){
+    final provider = Provider.of<TaskProvider>(context, listen: false);
+    provider.removeTask(task);
+
+    //DISPLAY MESSAGE
+    TaskUtils.showSnackBar(context, 'Task removed');
+  }
 
   Color getColor(Task task) {
     switch (task.priority) {
@@ -100,7 +122,7 @@ class TaskWidget extends StatelessWidget {
         return const Icon(
           Icons.business_center_rounded, //attach_money
           color: Colors.black,
-          size: 36.0);
+          size: 35);
       case 'Other':
         return const Icon(
           Icons.contact_support_outlined ,

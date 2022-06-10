@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:productivity_app/notes/note_class.dart';
-import 'package:productivity_app/notes/note_utils.dart';
+import 'package:productivity_app/tasks/task_class.dart';
 //ignore_for_file: prefer_const_constructors
 
 class FirebaseApi {
@@ -13,7 +13,7 @@ class FirebaseApi {
     final uid = user.uid.toString();
     return uid;
   }
-
+  //NOTES
   static Future<String> createNote(Note note) async { //static
     //A DOCUMENT WILL STORE ONE NOTE
     //final docNote = FirebaseFirestore.instance.collection('notes').doc();
@@ -38,5 +38,30 @@ class FirebaseApi {
                                               .collection('notes').doc(note.id);
 
     await docNote.delete();
+  }
+  //TASKS
+  static Future<String> createTask(Task task) async { //static
+    //A DOCUMENT WILL STORE ONE TASK
+    final docTask = FirebaseFirestore.instance.collection('users').doc(getCurrentUser())
+                                              .collection('tasks').doc();
+    task.id = docTask.id;
+
+    await docTask.set(task.toJson());
+
+    return docTask.id;
+  }
+
+  static Future updateTask(Task task) async{ //static
+    final docTask = FirebaseFirestore.instance.collection('users').doc(getCurrentUser())
+                                              .collection('tasks').doc(task.id);
+
+    await docTask.update(task.toJson());
+  }
+
+  static Future removeTask(Task task) async{ //static
+    final docTask = FirebaseFirestore.instance.collection('users').doc(getCurrentUser())
+                                              .collection('tasks').doc(task.id);
+
+    await docTask.delete();
   }
 }

@@ -43,7 +43,7 @@ class TaskFormWidget extends StatelessWidget {
     onChanged: onChangedTitle,
 
     //MAXIMUM LINES ALLOWED
-    maxLines: 1,
+    //maxLines: 1,
 
     //TITLE CAN'T BE EMPTY
     validator: (title){

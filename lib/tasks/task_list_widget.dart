@@ -33,7 +33,7 @@ class TaskListWidget extends StatelessWidget {
           return TaskWidget(task: task);
         },
 
-        separatorBuilder: (context, index) => Container(height: 25),
+        separatorBuilder: (context, index) => Container(height: 15),
 
         itemCount: tasks.length);
   }
