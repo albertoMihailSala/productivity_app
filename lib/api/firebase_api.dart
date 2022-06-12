@@ -93,5 +93,19 @@ class FirebaseApi {
                                               .collection('lists').doc(todo.id);
 
     await docTodo.delete();
+
+  }
+
+  static Future removeTodoContent(Todo todo) async {
+    FirebaseFirestore.instance.collection('users').doc(getCurrentUser())
+                                                      .collection('list_content').doc(todo.id)
+                                                      .collection('tasks')
+                                    .snapshots().forEach((querySnapshot) {
+                                      for (QueryDocumentSnapshot docSnapshot in querySnapshot.docs) {
+                                        docSnapshot.reference.delete();
+                                          }
+                                          });
+
+    //await colTodoContent.delete();
   }
 }

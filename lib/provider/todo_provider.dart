@@ -16,7 +16,12 @@ class TodoProvider extends ChangeNotifier {
         notifyListeners();
   });
 
-  void removeTodo(Todo todo) => FirebaseApi.removeTodo(todo);
+  void removeTodo(Todo todo) {
+    //FIRST REMOVE LIST CONTENT
+    FirebaseApi.removeTodoContent(todo);
+    //THEN REMOVE THE LIST ITSELF
+    FirebaseApi.removeTodo(todo);
+  }
 
   void updateTodo(Todo todo, String title) {
     todo.title = title;
