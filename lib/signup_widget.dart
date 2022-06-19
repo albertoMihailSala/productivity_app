@@ -108,7 +108,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                     children: [
                       TextSpan(
                           recognizer: TapGestureRecognizer()..onTap = widget.onClickedSignIn,
-                          text: 'Sign In',
+                          text: 'Log in with Firebase',
                           style: TextStyle(
                             //decoration: TextDecoration.underline,
                             color: Theme.of(context).colorScheme.secondary,

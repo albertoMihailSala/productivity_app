@@ -43,7 +43,7 @@ class NoteWidget extends StatelessWidget {
           onPressed: (context) => deleteNote(context, note),
           backgroundColor: Colors.red,
           foregroundColor: Colors.white,
-          icon: Icons.delete,
+          icon: Icons.close,
           label: 'Delete',
         ),
       ],

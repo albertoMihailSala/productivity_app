@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:productivity_app/provider/task_provider.dart';
 import 'task_utils.dart';
 import 'edit_task_page.dart';
+import 'package:productivity_app/date_time_picker/date_time.dart';
+//ignore_for_file: prefer_const_constructors
 
 class TaskWidget extends StatelessWidget {
   final Task task;
@@ -46,42 +48,49 @@ class TaskWidget extends StatelessWidget {
     ),
   );
 
-  Widget buildTask(BuildContext context) => Container(
-    decoration: BoxDecoration(
-      border: Border(
-        top: const BorderSide(
-              color: Colors.transparent),
-        left: const BorderSide(
-            color: Colors.transparent),
-        right: BorderSide(
-            color: getColor(task),
-            width: 5),
-        bottom: BorderSide(
-            color: getColor(task),
-            width: 2),
+  Widget buildTask(BuildContext context) => InkWell(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => DateTimePicker(task: task)),
       ),
-    ),
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        getIcon(task),
-        SizedBox(width: 10),
-        Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  task.title,
-                  style: const TextStyle(
-                    fontSize: 30,
-                    color: Colors.black,
-                  ),
-                ),
-              ],
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(
+                 color: Colors.transparent),
+            left: BorderSide(
+                  color: Colors.transparent),
+            right: BorderSide(
+                color: getColor(task),
+                width: 5),
+            bottom: BorderSide(
+                color: Colors.transparent
             ),
+          ),
         ),
-      ],
-    ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            //ICON
+            if(task.category != 'No category') getIcon(task),
+            if(task.category != 'No category') SizedBox(width: 6),
+            Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      task.title,
+                      style: const TextStyle(
+                       fontSize: 22,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
+                ),
+            ),
+          ],
+        ),
+      ),
   );
 
   void editTask(BuildContext context, Task task) => Navigator.of(context).push(
@@ -103,7 +112,7 @@ class TaskWidget extends StatelessWidget {
       case 'High':
         return Colors.red;
       case 'Medium':
-        return Colors.yellow;
+        return Colors.amber;
       case 'Low':
         return Colors.green;
       default:
@@ -115,24 +124,29 @@ class TaskWidget extends StatelessWidget {
     switch (task.category) {
       case 'Personal':
         return const Icon(
-          Icons.boy, //attribution / badge
+          Icons.account_circle, //attribution / badge
           color: Colors.black,
-          size: 45);
+          size: 25);
       case 'Work':
         return const Icon(
           Icons.business_center_rounded, //attach_money
           color: Colors.black,
-          size: 35);
-      case 'Other':
+          size: 25);
+      case 'School':
+        return const Icon(
+            Icons.school,
+            color: Colors.black,
+            size: 25);
+      case 'No category':
         return const Icon(
           Icons.contact_support_outlined ,
           color: Colors.black,
-          size: 36.0);
+          size: 25);
       default:
         return const Icon(
           Icons.close,
           color: Colors.black,
-          size: 36.0);
+          size: 25);
     }
   }
 }

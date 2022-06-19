@@ -39,7 +39,6 @@ class NoteListWidget extends StatelessWidget {
               dashColor: Colors.black,
               lineThickness: 7,
               dashLength: 50,
-              dashRadius: 60,
               dashGapLength: 12,
             ),
           ),

@@ -8,13 +8,19 @@ import 'package:provider/provider.dart';
 import 'auth_page.dart';
 import 'verify_email_page.dart';
 import 'utils.dart';
-
+import 'package:productivity_app/api/notification_service.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/timezone.dart' as tz;
 //ignore_for_file: prefer_const_constructors
 
 //void main () => runApp(MyApp());
 //FIREBASE SYNTAX
 Future main() async {
+  //ENSURES ALL WIDGETS ARE INITIALIZED
   WidgetsFlutterBinding.ensureInitialized();
+  //INITIALIZE REMINDER
+  NotificationService.init(initReminder: true);
+  //CONECT TO FIREBASE
   await Firebase.initializeApp();
 
   runApp(MyApp());

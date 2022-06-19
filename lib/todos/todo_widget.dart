@@ -30,7 +30,7 @@ class TodoWidget extends StatelessWidget {
               onPressed: (context) => editTodo(context, todo),
               backgroundColor: Colors.lightGreen,
               foregroundColor: Colors.white,
-              icon: Icons.edit,
+              //icon: Icons.edit,
               label: 'Edit',
             ),
           ],
@@ -45,7 +45,7 @@ class TodoWidget extends StatelessWidget {
               onPressed: (context) => deleteTodo(context, todo),
               backgroundColor: Colors.red,
               foregroundColor: Colors.white,
-              icon: Icons.delete,
+              //icon: Icons.delete,
               label: 'Delete',
             ),
           ],
@@ -57,29 +57,27 @@ class TodoWidget extends StatelessWidget {
       context,
       MaterialPageRoute(builder: (context) => TaskMenu(todo: todo)),
     ),
-    child:  Container(
-        child: Row(
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    todo.title,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 45,
-                      color: Theme
-                          .of(context)
-                          .colorScheme
-                          .secondary,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+    child: Row(
+      children: [
+        Icon(
+            Icons.brightness_1_outlined
         ),
+        Expanded(
+                  child:
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        child: Text(
+                          todo.title,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                ),
+
+      ],
     ),
   );
 

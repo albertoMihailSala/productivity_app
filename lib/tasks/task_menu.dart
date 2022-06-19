@@ -63,13 +63,13 @@ class _TaskMenuState extends State<TaskMenu> {
         builder: (BuildContext context) => AddTaskPopup(todo: widget.todo),
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(15),
       ),
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Colors.indigo.shade900,
       //When long-pressed, button displays this text
       tooltip: 'Add',
       //Icon
-      child: Icon(Icons.add),
+      child: Icon(Icons.add_task),
     ),
   );
 

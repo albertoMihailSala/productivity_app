@@ -21,7 +21,7 @@ class NoteProvider extends ChangeNotifier {
   //ADAUGĂ NOTIȚELE ÎN LISTA DIN PROVIDER
   void setNotes(List<Note> notes) =>
      //NE ASIGURĂM CĂ NU ESTE CHEMATĂ ÎN TIMPUL METODEI DE BUILD
-      WidgetsBinding.instance?.addPostFrameCallback((_) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
        _notes = notes;
        notifyListeners();
      });

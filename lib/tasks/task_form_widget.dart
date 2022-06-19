@@ -13,8 +13,8 @@ class TaskFormWidget extends StatelessWidget {
   const TaskFormWidget({
     Key? key,
     this.title = '',
-    this.priority = 'High',
-    this.category ='Personal',
+    this.priority,
+    this.category,
     required this.onChangedTitle,
     required this.onChangedPriority,
     required this.onChangedCategory,
@@ -58,6 +58,9 @@ class TaskFormWidget extends StatelessWidget {
   );
 
   Widget buildPriority() => DropdownButtonFormField(
+      decoration: InputDecoration(
+        hintText: "Priority",
+      ),
       value: priority,
       items: <String>['High', 'Medium', 'Low']
               .map<DropdownMenuItem<String>>((String value) {
@@ -69,8 +72,11 @@ class TaskFormWidget extends StatelessWidget {
       onChanged: onChangedPriority);
 
   Widget buildCategory() => DropdownButtonFormField(
+      decoration: InputDecoration(
+        hintText: "Category",
+      ),
       value: category,
-      items: <String>['Personal', 'Work', 'Other']
+      items: <String>['Personal', 'Work', 'School', 'No category']
           .map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
@@ -87,6 +93,9 @@ class TaskFormWidget extends StatelessWidget {
       child: Text(
           'Save',
           textAlign: TextAlign.center
+      ),
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all<Color>(Colors.indigo.shade900),
       ),
     ),
   );

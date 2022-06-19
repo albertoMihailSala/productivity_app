@@ -11,7 +11,7 @@ class TodoProvider extends ChangeNotifier {
 
   void setTodos(List<Todo> todos) =>
       //NE ASIGURĂM CĂ NU ESTE CHEMATĂ ÎN TIMPUL METODEI DE BUILD
-      WidgetsBinding.instance?.addPostFrameCallback((_) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
         _todos = todos;
         notifyListeners();
   });

@@ -13,7 +13,7 @@ class TaskProvider extends ChangeNotifier {
 
   void setTasks(List<Task> tasks) =>
       //NE ASIGURĂM CĂ NU ESTE CHEMATĂ ÎN TIMPUL METODEI DE BUILD
-      WidgetsBinding.instance?.addPostFrameCallback((_) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
         _tasks = tasks;
         notifyListeners();
   });

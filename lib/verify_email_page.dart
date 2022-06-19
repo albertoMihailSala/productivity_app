@@ -78,23 +78,33 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
           title: Text('Verify your email'),
           ),
           body: Center(
-            //padding: EdgeInsets.all(16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'A verification email has been sent',
-                  style: GoogleFonts.redHatDisplay( //assistant
-                      textStyle: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      ),
+            child: Padding(
+            padding: EdgeInsets.all(16),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                //crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'A verification email has been sent',
+                    style: GoogleFonts.redHatDisplay( //assistant
+                        textStyle: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        ),
+                    ),
                   ),
-                ),
-                SizedBox(height: 20),
-                //RESEND EMAIL BUTTON
-                ElevatedButton.icon(
+                  Text(
+                    'Make sure to check your Junk folder',
+                    style: GoogleFonts.redHatDisplay( //assistant
+                      textStyle: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  //RESEND EMAIL BUTTON
+                  ElevatedButton.icon(
                     onPressed: canResendEmail
                                ? sendVerificationEmail
                                :null,
@@ -106,24 +116,25 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                       //Text Font
                       textStyle: MaterialStateProperty.all(
                         const TextStyle(fontSize: 25),
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(height: 20),
-                //CANCEL
-                TextButton(
-                    onPressed: () => FirebaseAuth.instance.signOut(),
-                    child: Text('Cancel',
+                  SizedBox(height: 20),
+                  //CANCEL
+                  TextButton(
+                      onPressed: () => FirebaseAuth.instance.signOut(),
+                      child: Text('Cancel',
                                   style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                   ),
                           ),
 
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
           ),
-        );
+  );
 }
 

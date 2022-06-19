@@ -4,6 +4,7 @@ import 'task_form_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:productivity_app/provider/task_provider.dart';
 import 'task_utils.dart';
+//ignore_for_file: prefer_const_constructors
 
 class EditTaskPage extends StatefulWidget {
   final Task task;
@@ -37,6 +38,7 @@ class _EditTaskPageState extends State<EditTaskPage> {
   Widget build(BuildContext context) => Scaffold (
     appBar: AppBar(
       title: Text('Update task'),
+      backgroundColor: Colors.indigo.shade900,
     ),
     body: Padding(
       padding: EdgeInsets.all(16),

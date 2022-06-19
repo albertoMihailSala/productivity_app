@@ -1,7 +1,9 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:productivity_app/provider/todo_provider.dart';
 import 'todo_widget.dart';
+//ignore_for_file: prefer_const_constructors
 
 class TodoListWidget extends StatelessWidget {
   //const NoteListWidget({Key? key}) : super(key: key);
@@ -31,7 +33,18 @@ class TodoListWidget extends StatelessWidget {
           return TodoWidget(todo: todo);
         },
 
-        separatorBuilder: (context, index) => Container(height: 25),
+        //separatorBuilder: (context, index) => Container(height: 15),
+        separatorBuilder: (context, index) => Padding(
+          padding: EdgeInsets.symmetric(vertical: 25),
+          child:DottedLine(
+            dashColor: Colors.black,
+            lineThickness: 7,
+            dashLength: 50,
+            dashRadius: 60,
+            dashGapLength: 12,
+            dashGradient: [Theme.of(context).colorScheme.background, Theme.of(context).colorScheme.primary],
+          ),
+        ),
 
         itemCount: todos.length);
   }
