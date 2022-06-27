@@ -29,96 +29,110 @@ class Menu extends StatelessWidget{
               style: GoogleFonts.prompt(
                 textStyle: TextStyle(
                   color: Theme.of(context).colorScheme.primary,
-                  fontSize: 35,
+                  fontSize: 30,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
             //Space between
             SizedBox(height: 30),
-            //Lists Button
-            OutlinedButton.icon(
-              //Function
-              onPressed: () {
-                Navigator.push(
+            //LISTS BUTTON
+            Container(
+              width: 250,
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      //Colors.indigo.shade200,
+                      Colors.deepPurple.shade50,
+                      Theme.of(context).colorScheme.primary,
+                    ],
+                    //begin: Alignment.centerLeft,
+                    //Alignment.centerRight,
+                  ),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(25.0),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.indigo.withOpacity(0.2),
+                      spreadRadius: 4,
+                      blurRadius: 10,
+                      offset: Offset(0, 3),
+                    )
+                  ]
+              ),
+              child: InkWell(
+                onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => TodoMenu()),
-                );
-              },
-              //Icon
-              icon: Icon(
-                Icons.format_list_bulleted_rounded,
-                size: 95,
-                color: Colors.black,
-              ),
-              //Text
-              label: Text(
-                  'Lists',
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
-              ),
-              //Button proprieties
-              style: ButtonStyle(
-                //Change border
-                side: MaterialStateProperty.all(BorderSide(
-                    color: Colors.black,
-                    width: 4,
-                    style: BorderStyle.solid)),
-                //Change shape to a more rodunded one
-                shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(35.0))),
-                //Size for consistency
-                minimumSize: MaterialStateProperty.all(const Size(370, 40)),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Icon(
+                      Icons.format_list_bulleted_rounded,
+                      size: 60,
+                      color: Colors.white,
+                    ),
+                    Text('Lists',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 70,
+                      ),
+                    ),
+                  ],
 
-                //Distance between text & container
-                padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
-
-                //Text Font
-                textStyle: MaterialStateProperty.all(
-                  const TextStyle(fontSize: 95),
                 ),
               ),
             ),
             //Space between
             SizedBox(height: 20),
-            //Notes Button
-            OutlinedButton.icon(
-              //Function
-              onPressed: () {
-                Navigator.push(
+            //NOTES BUTTON
+            Container(
+              width: 250,
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      //Colors.indigo.shade200,
+                      Colors.deepPurple.shade50,
+                      Theme.of(context).colorScheme.primary,
+                    ],
+                    //begin: Alignment.centerLeft,
+                    //Alignment.centerRight,
+                  ),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(25.0),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.indigo.withOpacity(0.2),
+                      spreadRadius: 4,
+                      blurRadius: 10,
+                      offset: Offset(0, 3),
+                    )
+                  ]
+              ),
+              child: InkWell(
+                onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => NoteMenu()),
-                );
-              },
-              //Icon
-              icon: Icon(
-                Icons.edit_note,
-                size: 94,
-                color: Colors.black,
-              ),
-              //Text
-              label: Text(
-                  'Notes',
-                style: TextStyle(
-                  color: Colors.black,
                 ),
-              ),
-              //Button proprieties
-              style: ButtonStyle(
-                //Change border width & color
-                side: MaterialStateProperty.all(BorderSide(
-                      color: Colors.black,
-                      width: 4,
-                      style: BorderStyle.solid)),
-                //Change shape to a more rodunded one
-                shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(35.0))),
-                //Distance between text & container
-                padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
-                //Text Font
-                textStyle: MaterialStateProperty.all(
-                  const TextStyle(fontSize: 94),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Icon(
+                      Icons.edit_note,
+                      size: 60,
+                      color: Colors.white,
+                    ),
+                    Text('Notes',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 65,
+                      ),
+                    ),
+                  ],
+
                 ),
               ),
             ),
@@ -133,7 +147,7 @@ class Menu extends StatelessWidget{
                   padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
                   //Text Font
                   textStyle: MaterialStateProperty.all(
-                    const TextStyle(fontSize: 40),
+                    const TextStyle(fontSize: 30),
                   ),
                 ),
             ),
@@ -141,7 +155,7 @@ class Menu extends StatelessWidget{
               height: 20,
             ),
             //Politehnica Logo
-            Image.asset('assets/Logo_Politehnica.png', height: 120, width: 120),
+            Image.asset('assets/Logo_Politehnica.png', height: 100, width: 100),
           ],
           ),
         ),

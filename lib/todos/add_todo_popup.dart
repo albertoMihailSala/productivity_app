@@ -3,6 +3,7 @@ import 'todo_form_widget.dart';
 import 'todo_class.dart';
 import 'package:provider/provider.dart';
 import 'package:productivity_app/provider/todo_provider.dart';
+//ignore_for_file: prefer_const_constructors
 
 class AddTodoPopup extends StatefulWidget {
   const AddTodoPopup({Key? key}) : super(key: key);

@@ -16,7 +16,7 @@ class TaskListWidget extends StatelessWidget {
     return tasks.isEmpty
         ? Center(
       child: Text(
-        'THERE ARE NO TASKS YET',
+        'START ADDING TASKS!',
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 20,

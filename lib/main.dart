@@ -9,8 +9,6 @@ import 'auth_page.dart';
 import 'verify_email_page.dart';
 import 'utils.dart';
 import 'package:productivity_app/api/notification_service.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:timezone/timezone.dart' as tz;
 //ignore_for_file: prefer_const_constructors
 
 //void main () => runApp(MyApp());

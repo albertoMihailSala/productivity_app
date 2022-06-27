@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../api/firebase_api.dart';
 import 'add_note_popup.dart';
@@ -6,6 +7,9 @@ import 'note_list_widget.dart';
 import 'note_class.dart';
 import 'package:provider/provider.dart';
 import 'package:productivity_app/provider/note_provider.dart';
+import 'package:productivity_app/navigation/nav_option.dart';
+import 'package:productivity_app/navigation/nav_menu.dart';
+import 'package:productivity_app/todos/todo_menu.dart';
 //ignore_for_file: prefer_const_constructors
 
 class NoteMenu extends StatefulWidget {
@@ -26,6 +30,16 @@ class _NoteMenuState extends State<NoteMenu> {
               fontWeight: FontWeight.bold,
             ),
           ),
+          /*
+          actions: [
+            PopupMenuButton<NavOption>(
+              itemBuilder: (context) => [
+                ...NavMenu.nav2.map(buildOption).toList(),
+              ],
+              onSelected: (option) => onSelected(context, option),
+            ),
+          ],
+          */
         ),
          body: StreamBuilder<List<Note>>(
            stream: readNotes(),
@@ -64,4 +78,25 @@ class _NoteMenuState extends State<NoteMenu> {
           .snapshots()
       .map((snapshot) =>
       snapshot.docs.map((doc) => Note.fromJson(doc.data())).toList());
+
+  /*
+  PopupMenuItem<NavOption> buildOption(NavOption option) => PopupMenuItem<NavOption>(
+    value: option,
+    child: Text(option.text),
+  );
+
+  void onSelected(BuildContext context, NavOption option){
+    switch(option){
+      case NavMenu.lists:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => TodoMenu()),
+        );
+        break;
+      case NavMenu.signOut:
+        FirebaseAuth.instance.signOut();
+        break;
+    }
+  }
+  */
 }

@@ -1,14 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest_10y.dart' as tz;
-import 'package:rxdart/rxdart.dart';
 import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 //ignore_for_file: prefer_const_constructors
 
 class NotificationService{
   static final _notifications = FlutterLocalNotificationsPlugin();
-  static final onNotifications = BehaviorSubject<String?>();
+  //static final onNotifications = BehaviorSubject<String?>();
 
   static Future _notificationDetails() async {
     return NotificationDetails(
@@ -24,7 +22,7 @@ class NotificationService{
   }
 
   static Future init({bool initReminder = false}) async {
-    final android = AndroidInitializationSettings('reminder');
+    final android = AndroidInitializationSettings('@mipmap/ic_launcher'); //reminder
     final iOS = IOSInitializationSettings();
     final settings = InitializationSettings(android: android, iOS: iOS);
 

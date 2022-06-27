@@ -73,7 +73,7 @@ class _EditTaskPageState extends State<EditTaskPage> {
       //EXIT EDIT PAGE AFTER UPDATE
       Navigator.of(context).pop();
       //DISPLAY MESSAGE
-      TaskUtils.showSnackBar(context, 'Saved changes');
+      TaskUtils.showSnackBar(context, 'Task updated');
 
     }
   }
